@@ -2,42 +2,59 @@
 #include <vector>
 #include <math.h>
 #include "Bar.cpp"
+#include <stdlib.h>
 
 class Town {
 
 protected:
-	bool pecentTrue;
-	int user_size;
-	int user_cap;
-	Bar array[];
-	int poulation;
-	int numpeeps[population];
+	int user_size,user_cap,numbars,numpeeps,population;
+	Bar barnums[256];
+	Agent people[16348];
+	int STM[3];
 	
 public:
-	Town (int numpeople){
-		population = numpeople;
+
+	Town(int number_bars,int population,int user_cap[]) {
+		numbars=number_bars;
+		numpeeps=population;
+		int i,j,k;
+		for (i=0;i<3;i++) {
+			STM[i] = rand()%numbars;
+		}
 	}
-	int createBars() {
-		Bar *getinfo = new Bar(user_size,user_cap);
-		Bar array[getinfo->user_size];
+
+	void createBars(int numbars,int user_cap[]) {
+		int i;
+		for (i=0;i<numbars;i++) {
+			barnums[i] = new Bar(user_cap[i]);
+		}
     }
+
+	void createAgents(int population) {
+		int i;
+		for (i=0;i<population;i++) {
+			people[i] = new Agent(numbars);
+		}
+	}
+
+	int* clearBar() {
+		int i;
+		for (i=0;i<)
+	}
 	
 	void turn () {
+		clearBar();
 		goingToBar();
-		askPercent();
 		getWinners();
 	}
 	
-	
-	int askPercent ();
-	
 	int* goingToBar() {
 		int i,count;
-		Bar *barpeep;
-		for (i=0;i<;i++) 
-			barpeep[numpeeps[i].isGoingToBar()]++;
+		int barpeople[256];
+		for (i=0;i<256;i++) 
+			barpeople[numpeeps[i].isGoingToBar()]++;
 
-		return barpeep;
+		return barpeople;
 	}
 
 	void getWinners() {
@@ -45,12 +62,6 @@ public:
 		for (j=0;j<numpeeps;j++)
 			if numpeeps[j].isGoingToBar() == 0
 				countalt++;
-
-		if goingToBar() > countalt
-			 cout << "Winner is the group not in the bar."
-		else
-			cout << "Winner is the group in the bar."
-	}
 
 };
 

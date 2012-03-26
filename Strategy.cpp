@@ -33,9 +33,8 @@ void updateScore(bool i)
 }
 
 int getStrat(int shortterm) {
-	return 
+	return (int) st[shortterm%2048];
 }
-
 	
 private:
 	int st[2048];
