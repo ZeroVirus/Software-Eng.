@@ -1,53 +1,64 @@
 #include <iostream>
 #include <vector>
 #include <math.h>
-#include <Agent.h>
+#include "Bar.cpp"
 
 class Town {
-private:
-	vector<Agent *> numpeeps;
-	double BarCapacity;
-	boolean pecentTrue;
+
+protected:
+	bool pecentTrue;
+	int user_size;
+	int user_cap;
+	Bar array[];
+	int poulation;
+	int numpeeps[population];
+	
 public:
-	void turn ();
-	static int goingToBar ();
-	static void getWinners ();
+	Town (int numpeople){
+		population = numpeople;
+	}
+	int createBars() {
+		Bar *getinfo = new Bar(user_size,user_cap);
+		Bar array[getinfo->user_size];
+    }
+	
+	void turn () {
+		goingToBar();
+		askPercent();
+		getWinners();
+	}
+	
+	
 	int askPercent ();
+	
+	int* goingToBar() {
+		int i,count;
+		Bar *barpeep;
+		for (i=0;i<;i++) 
+			barpeep[numpeeps[i].isGoingToBar()]++;
+
+		return barpeep;
+	}
+
+	void getWinners() {
+		int j,countalt;
+		for (j=0;j<numpeeps;j++)
+			if numpeeps[j].isGoingToBar() == 0
+				countalt++;
+
+		if goingToBar() > countalt
+			 cout << "Winner is the group not in the bar."
+		else
+			cout << "Winner is the group in the bar."
+	}
+
 };
 
-void turn () {
-	goingToBar();
-	askPercent();
-	getWinners();
-}
 
-static int goingToBar () {
-	int i,count;
-	for (i=0;i<numpeeps.max_size();i++) 
-		if numpeeps[i].isGoingToBar() == 1 
-			count++; 
 
-	return count;
-}
 
-staic void getWinners() {
-	int j,countalt;
-	for (j=0;j<numpeeps;j++)
-		if numpeeps[j].isGoingToBar() == 0
-			countalt++;
-	
-	if goingToBar() > countalt
-		 cout << "Winner is the group not in the bar."
-	else
-		cout << "Winner is the group in the bar."
-}
 
-int[] askPercent {
-	int popper[1];
-	popper[0]=(goingToBar()/numpeeps.max_size())*100;
-	popper[1]=((numpeeps.max_size() - goingToBar())/*100;
-	return popper;
-}
+
 
 
 	
