@@ -13,12 +13,12 @@ public:
 	Agent(int a);
 	
 	int isGoingToBar(int STM);
-	void tellWins(int winners[],int STM);
+	double* tellWins(int winners[],int STM);
 	~Agent();
 
 protected:
 	Strategy strats[3];
-
+	int numbars,bar;
 };
 
 #endif

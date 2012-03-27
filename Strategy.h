@@ -7,7 +7,7 @@ public:
 	Strategy(int numbars);
 		double getScore();
 		int getBar(long f);
-		void updateScore(int i);
+		double updateScore(int i);
 		int getStrat(int shortterm);
 
 private:

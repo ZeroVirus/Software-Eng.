@@ -16,14 +16,15 @@ public:
 	int* goingToBar();
 	int* getWinners(int a[256]);
 	void tellWinners(int a[256]);
+	~Town();
 
 protected:
-	int user_size, numbars, numpeeps, population;
+	int user_size, numbars, numpeeps;
 	Bar barnums[256];
 	Agent people[16348];
 	int STM[3];
 	int ST;
-
+	graphPtr stuff;
 };
 
 #endif
