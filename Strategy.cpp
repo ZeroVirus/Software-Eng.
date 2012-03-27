@@ -20,25 +20,23 @@ double getScore()
 	return score;
 }
 
-int getBar(long f)
-{
-	return st[f%2048];
-}
-
-void updateScore(int i)
+double updateScore(int i)
 {
 	score*=.95;
 	score+=i;
-	return;
+	return score;
 }
 
 int getStrat(int shortterm) {
 	return (int) st[shortterm%2048];
 }
 	
+~Strategy::Strategy();
+	
 private:
 	int st[2048];
 	double score;
+
 
 
 };

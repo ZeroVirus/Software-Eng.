@@ -56,6 +56,7 @@ public:
 		ST=pow(STM[2],3)+pow(STM[1],2)+STM[0];
 		int a[256]=goingToBar();
 		a=getWinners(a);
+		tellWinners(a);
 	}
 	
 	int* goingToBar() {
