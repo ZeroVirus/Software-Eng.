@@ -14,14 +14,14 @@ Precondition: The parameters are initialized within the following constraints: 1
 Postcondition: Barnums array and people array initialized as well as STM array which keeps track which bar has won.
 Description: Town Constructor which creates the Bars and Agents using inputted parameters by the createBars() and createAgents() functions
 */
-Town::Town(int number_bars,int population,int user_cap[]) {
+Town::Town(int number_bars,int population,int user_cap[],bool isPercent) {
 	numbars=number_bars;
 		numpeeps=population;
 		int i;
 		for (i=0;i<3;i++) {
 			STM[i] = rand()%numbars;
 		}
-		createBars(numbars, user_cap);
+		createBars(numbars, user_cap, isPercent);
 		createAgents( population);
 		stuff=new struct pass_graph;
 		stuff->numWinners=0;
@@ -32,12 +32,13 @@ Postcondition: Bar array barnums[] has been initialized
 Description: The Bar array barnums[] is initialized and bar[0] is the normalizing home location that if the population is greater 
 than the sum of all “user_cap[]”s, then bar [0] gets the value of population - SUM(user_cap[])
 */
-void Town::createBars(int numbars,int user_cap[]) {
-		int i;
+void Town::createBars(int numbars,int user_cap[],bool isPercent) {
+		int i,j;
 		int temp=0;
 		for (i=0;i<numbars;i++) {
-			barnums[i+1] = Bar(user_cap[i]);
-			temp+=user_cap[i];
+			j=(isPercent?(numpeeps*user_cap[i]/100):user_cap[i]);
+			barnums[i+1] = Bar(j);
+			temp+=j;
 		}
 		barnums[0]= Bar((numpeeps>temp?numpeeps-temp:0));
     }
@@ -91,9 +92,9 @@ int* Town::goingToBar() {
 		return barpeople;
 	}
 
-/* Precondition: 
-Postcondition: Agents that have won for a particular round have been acknowledged and updated
-Description:
+/* Precondition: Input is a int array which contains 1s's where bars won and 0's where bars lost
+Postcondition: Bars that have won for a particular round have been acknowledged and updated
+Description: Function updates the STM to add current turn data. Also populates Stuff structure to pass back to the GUI for graph output
 */
 int* Town::getWinners(int a[]){
 		int j;
@@ -145,8 +146,8 @@ void Town::tellWinners(int a[256]) {
 	double* temp;
 	for (i=0;i<numpeeps;i++) 
 	{
-		temp=people[i].tellWins(a,ST);
-		average+=temp[1];
+		temp=people[i].tellWins(a,ST); //returns array of graph data
+		average+=temp[1]; //
 		if(temp[0]>max)
 		{
 			max=temp[0];

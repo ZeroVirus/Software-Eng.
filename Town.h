@@ -9,8 +9,8 @@ using namespace std;
 class Town{
 public:
 	Town();
-	Town(int number_bars,int population,int user_cap[]);
-	void createBars(int numbars,int user_cap[]);
+	Town(int number_bars,int population,int user_cap[],bool isPercent);
+	void createBars(int numbars,int user_cap[],bool isPercent);
 	void createAgents(int population);
 	graphPtr turn();
 	int* goingToBar();

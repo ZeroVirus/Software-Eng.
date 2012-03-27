@@ -1,17 +1,17 @@
 #include "Agent.h"
 
 
-
+// Default Agent Constructor
 Agent::Agent(){
 
 
 }
 
+/* Precondition: 0 <= numb <= 256
+Postcondition: An Agents Strategies has been initialized and 
+Description: Initializes an Agents Strategy
+*/
 Agent::Agent(int numb){
-	if(numb>200)
-	{
-		exit(1);
-	}
 	strats[0]=Strategy(numb);
 	strats[1]=Strategy(numb);
 	strats[2]=Strategy(numb);
@@ -19,7 +19,10 @@ Agent::Agent(int numb){
 	bar=0;
 }
 
-
+/* Precondition: unsure if won
+Postcondition: sure if won and uopdated score/dropped scores
+Description: does the above
+*/
 double* Agent::tellWins(int winners[],int STM) {
 	int i;
 	double * rtn;
@@ -48,6 +51,10 @@ double* Agent::tellWins(int winners[],int STM) {
 	return rtn;
 }
 
+/* Precondition: not sure if going to bar
+Postcondition:sure if going to bar
+Description: does the above
+*/
 int Agent::isGoingToBar(int STM)
 {
 	int i;
@@ -58,10 +65,6 @@ int Agent::isGoingToBar(int STM)
 		if((f-=strats[i].getScore())<=0)
 		{
 			bar=strats[i].getStrat(STM);
-			if(strats[i].getStrat(STM)>30)
-			{
-				cout<<"b"<<endl;
-			}
 			return strats[i].getStrat(STM);
 		}
 	}
