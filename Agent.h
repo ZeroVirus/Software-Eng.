@@ -1,28 +1,24 @@
+#ifndef AGENT_H
+#define AGENT_H
+
 #include <iostream>
-#include <string>
 #include <cstdlib>
-#include <time.h>
-#include "Town.cpp"
+#include "Strategy.h"
 using namespace std;
 
-class Agent : public Town {
+class Agent {
 
 public:
+	Agent();
 	Agent(int a);
 	
-	bool getIsGoingToBar();
-	void agentDecision();
-	
-	void setPercentDown();
-	void setPercentUp();
-	float getPercent();
-	int num_wins();
-
+	int isGoingToBar(int STM);
+	void tellWins(int winners[],int STM);
 	~Agent();
 
 protected:
-	int bar;
 	Strategy strats[3];
-	int wins;
 
 };
+
+#endif

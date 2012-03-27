@@ -1,23 +1,20 @@
-#include <iostream>
-using namespace std;
+#include "Bar.h"
 
-class Bar {
-	public:
-		Bar(int cap) {
-			maxcapacity = cap;
-		}
-		
-		int getBarCapacity() {
-			return maxcapacity;
-		}
-		
-		double wonThisTurn(int peeps) {
-		
-			return (((double)peeps)/((double)maxcapacity));
-		}
+Bar::Bar(){
 
-	private:
-		int maxcapacity;
-		int size;
-};
 
+}
+
+
+Bar::Bar(int cap) {
+	maxcapacity = cap;
+	cout << "maxCapacity of bar : " << maxcapacity << endl;
+}
+		
+int Bar::getBarCapacity() {
+	return maxcapacity;
+}
+		
+double Bar::wonThisTurn(int peeps) {
+	return (((double)peeps)/((double)maxcapacity));
+}

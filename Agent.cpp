@@ -1,25 +1,29 @@
 #include "Agent.h"
-#include "Strategy.cpp"
 
-Agent::Agent(int numbars){
-	strats[0]=new Strategy(numbars);
-	strats[1]=new Strategy(numbars);
-	strats[2]=new Strategy(numbars);
-	bar=0;
+
+
+Agent::Agent(){
+
+
 }
 
-void tellWins(int winners[],int STM) {
+Agent::Agent(int numbars){
+	/*strats[0]=Strategy(numbars);
+	strats[1]=Strategy(numbars);
+	strats[2]=Strategy(numbars);*/
+}
+
+
+void Agent::tellWins(int winners[],int STM) {
 	int i;
 	for (i=0;i<3;i++) {
-		if((strats[i].updateScore(winners[strats[i].getStrat(ST)]))<5)
-		{
-			delete strats[i];
-			strats[i]=new Strategy(numbars);
-		}
+		strats[i].updateScore(winners[strats[i].getStrat(STM)]);
+			
+		
 	}
 }
 
-int isGoingToBar(int STM)
+int Agent::isGoingToBar(int STM)
 {
 	int i;
 	double f = (double)rand() / RAND_MAX;
