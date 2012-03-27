@@ -13,7 +13,7 @@ class Bar {
 		
 		double wonThisTurn(int peeps) {
 		
-			return peeps/maxcapacity;
+			return (((double)peeps)/((double)maxcapacity));
 		}
 
 	private:

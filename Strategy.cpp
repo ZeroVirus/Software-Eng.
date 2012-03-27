@@ -25,7 +25,7 @@ int getBar(long f)
 	return st[f%2048];
 }
 
-void updateScore(bool i)
+void updateScore(int i)
 {
 	score*=.95;
 	score+=i;

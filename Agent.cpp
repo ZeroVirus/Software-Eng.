@@ -8,10 +8,14 @@ Agent::Agent(int numbars){
 	bar=0;
 }
 
-void tellWinners(int winners[],int STM) {
+void createStrats()
+
+void tellWins(int winners[],int STM) {
 	int i;
 	for (i=0;i<3;i++) {
-		if (winners[st[i].getStrats(STM)])
+		strats[i].updateScore(winners[strats[i].getStrat(ST)]);
+			
+		
 	}
 }
 	
@@ -19,6 +23,7 @@ void tellWinners(int winners[],int STM) {
 
 //Agent Class Destructor
 Agent::~Agent(){
+
 
 
 }
