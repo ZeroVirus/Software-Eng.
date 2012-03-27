@@ -3,6 +3,7 @@
 #include <math.h>
 #include "Bar.cpp"
 #include <stdlib.h>
+#include "Agent.h"
 
 class Town {
 
