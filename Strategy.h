@@ -4,16 +4,17 @@
 class Strategy{
 public:
 	Strategy();
+	Strategy(Strategy * s);
 	Strategy(int numbars);
-		double getScore();
-		int getBar(long f);
-		double updateScore(int i);
-		int getStrat(int shortterm);
-
-private:
+	double getScore();
+	int getBar(long);
+	double updateScore(int);
+	int getStrat(int);
+	int hash(int);
 	int st[2048];
 	double score;
 
 };
 
 #endif
+

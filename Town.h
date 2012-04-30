@@ -3,27 +3,34 @@
 
 #include "Graph.h"
 #include "Bar.h"
-#include "Agent.h"
+#include "Group.h"
+#include <list>
 using namespace std;
 
 class Town{
 public:
 	Town();
-	Town(int number_bars,int population,int user_cap[],bool isPercent);
-	void createBars(int numbars,int user_cap[],bool isPercent);
-	void createAgents(int population);
+	Town(int,int,int[],bool,int,int,int);
+	void createBars(int numbars,int* user_cap,bool isPercent);
+	void createGroups(int population,int numGrps,int avgAge,int dropValue);
 	graphPtr turn();
 	int* goingToBar();
-	int* getWinners(int a[256]);
-	void tellWinners(int a[256]);
+	int* getWinners(int *a);
+	void tellWinners(int *a);
+	int popcontrol();
 	~Town();
 
 protected:
-	int user_size, numbars, numpeeps;
-	Bar barnums[256];
-	Agent people[16348];
-	int STM[3];
-	int ST;
+	int numbars, numgroups;
+	int grpSize,numpeeps,drop;
+	Bar ** barnums;
+	list<Group *> groups;
+	list<Group *>::iterator it;
+	Strategy ** topStrats;
+	list<Strategy *>::iterator it2;
+	int *STM;
+	int STI;
+	int avgAge;
 	graphPtr stuff;
 };
 

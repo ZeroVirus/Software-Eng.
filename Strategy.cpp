@@ -6,7 +6,15 @@ using namespace std;
 
 Strategy::Strategy()
 { }
-
+Strategy::Strategy(Strategy * s)
+{
+	int i;
+	for(i=0;i<2048;i++)
+	{
+		st[i]=s->st[i];
+	}
+	score=s->score;
+}
 /* Precondition: 1<= numbars <= 255
 Postcondition: int array st that holds Strategies,  
 Description: Strategy Constructor that is utilized by Agent class
@@ -18,8 +26,7 @@ Strategy::Strategy(int numbars)
 	{
 		st[i]=(int)rand()%numbars;
 	}
-	score=10;
-	
+	score=100;
 }
 
 /* Precondition: None
@@ -31,13 +38,25 @@ double Strategy::getScore()
 	return score;
 }
 
+//Stolen from http://www.concentric.net/~ttwang/tech/inthash.htm
+int Strategy::hash(int key)
+{
+  key = ~key + (key << 15); // key = (key << 15) - key - 1;
+  key = key ^ (key >> 12);
+  key = key + (key << 2);
+  key = key ^ (key >> 4);
+  key = key * 2057; // key = (key + (key << 3)) + (key << 11);
+  key = key ^ (key >> 16);
+  return key%2048;
+}
+
 /* Precondition: None
 Postcondition: None
 Description: Returns which bar number the Agent will go to for a given round.
 */
 int Strategy::getBar(long f)
 {
-	return st[f%2048];
+	return st[hash(f)];
 }
 
 /* Precondition: None
@@ -47,14 +66,8 @@ Description: A strategies previous score is updated for a given turn.
 double Strategy::updateScore(int i)
 {
 	score*=.95;
-	score+=i;
+	score+=(i*10);
 	return score;
 }
 
-/* Precondition: 0 < shortterm <= 254^4 - 1
-Postcondition: Returns which strategy number(0,1,2) the Agent is going to utilize.
-Description: Gets either strategy 0 1 of 2 because each Agent has 3 strategies to choose from.
-*/
-int Strategy::getStrat(int shortterm) {
-	return (int) st[shortterm%2048];
-}
+

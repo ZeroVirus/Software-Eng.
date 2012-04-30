@@ -10,15 +10,17 @@ class Agent {
 
 public:
 	Agent();
-	Agent(int a);
-	
-	int isGoingToBar(int STM);
-	double* tellWins(int winners[],int STM);
+	Agent(int,int,int);
+	Agent(int numb,int avgAge,int drop, Strategy * s1, Strategy * s2, Strategy * s3);
+	int isGoingToBar(int);
+	Strategy ** tellWins(int[],int);
+	bool isDead();
 	~Agent();
 
 protected:
-	Strategy strats[3];
-	int numbars,bar;
+	Strategy** strats;
+	int numbars,bar,age,death,drop;
 };
 
 #endif
+
