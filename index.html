@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<script language="javascript">
+function Town(form,population,isPercent) {
+	this.form = form;
+	this.population = form.numAgent.value;
+	var czech = form.Bars_based.checked;
+	if (czech) {
+		barval = form.percentBars.value;
+		this.isPercent = barval;
+	}
+	var i;
+	var stm = new Array();
+	for (i=0;i<3;i++) {
+		stm[i] = Math.ceil(Math.random());
+	}
+	createAgents(population);
+}
+
+Town.prototype {
+	createAgents : function(population) {
+		var i,count = 0;
+		var people = new Agent();
+		people = new Array[population];
+		for (i=0;i<population;i++) {
+			people[i] = Agent(number_bars);
+			++count;
+		}		
+	}
+	
+	isGoingToBar : function() {
+		var i,j,k;
+		if (people[i])
+	}
+	
+	
+};
+
+function main(form) {
+	var barval;
+	var czech = form.Bars_based.checked;
+	if (czech) {
+		barval = form.percentBars.value;
+		alert(czech);
+	}
+
+		var newvar = form.numAgent.value;
+	
+}
+</script>
+
+
+
+<head>
+<html>
+<title> B.A.R.G.A.M.E. </title>
+ <style type="text/css">
+  body { color: black}
+  body { background-color: #CCBB99 }
+  </style>
+</head>
+
+<body>
+<h1> Welcome to the BARGAME Web app.</h1>
+<h4>Powered by Python</h4>
+
+
+<form action="" method="GET" name="bargame"> 
+ <table border="0" >
+ <tr><b>Bar Capacity </b></br>
+ </tr>
+ <tr>
+ <td><input type="radio" name="Bars_based" value="PercentBased"/> Percent Based: </td><td><input type ="text" name="percentBars" size="5 "/></td>
+ </tr>
+ </table>
+ 
+</br>
+   <b>Population Variables </b></br>  
+<table border="0" >
+<tr>
+<td>Number of Agents: </td><td><input type="text" name="numAgent" size="15" /></td>
+</tr>
+<tr>
+<td>Number Of Turns: </td><td><input type="text" name="numTurns" size="15" /></td>
+</table>
+</br>
+ <input type="submit" onclick="main(this.form)" value="Simulate!" />
+ </form>
+
+ 
+ </body>
+</html>
