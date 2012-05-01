@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+		var i;
+		var e=new Array(5);
+		for(i=0;i<5;i++)
+		{
+			
+			e[i]=[i,i];
+		}
+        var data = google.visualization.arrayToDataTable(e);
+
+        var options = {
+          title: 'Age vs. Weight comparison',
+          hAxis: {title: 'Age', minValue: 0, maxValue: 15},
+          vAxis: {title: 'Weight', minValue: 0, maxValue: 15},
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+	<form action="" method="GET" name="bargame"> 
+	 <table border="0" >
+	 <tr><b>Bar Capacity </b></br>
+	 </tr>
+	 <tr>
+	 <td><input type="radio" name="Bars_based" value="PercentBased"/> Percent Based: </td><td><input type ="text" name="percentBars" size="5 "/></td>
+	 </tr>
+	 </table>
+
+	</br>
+	   <b>Population Variables </b></br>  
+	<table border="0" >
+	<tr>
+	<td>Number of Agents: </td><td><input type="text" name="numAgent" size="15" /></td>
+	</tr>
+	<tr>
+	<td>Number Of Turns: </td><td><input type="text" name="numTurns" size="15" /></td>
+	</table>
+	</br>
+	 <input type="submit" onclick="main(this.form)" value="Simulate!" />
+	 </form>
+	<?php
+	$a=array("a"=>"Dog","b"=>"Cat","c"=>"Horse");
+	print_r($a);
+	?>
+  </body>
+</html>
