@@ -1,52 +1,50 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script language="javascript">
-function Town(form,population,isPercent) {
-	this.form = form;
-	this.population = form.numAgent.value;
-	var czech = form.Bars_based.checked;
-	if (czech) {
-		barval = form.percentBars.value;
-		this.isPercent = barval;
-	}
-	var i;
-	var stm = new Array();
-	for (i=0;i<3;i++) {
-		stm[i] = Math.ceil(Math.random());
-	}
-	createAgents(population);
-}
 
-Town.prototype {
-	createAgents : function(population) {
-		var i,count = 0;
-		var people = new Agent();
-		people = new Array[population];
-		for (i=0;i<population;i++) {
-			people[i] = Agent(number_bars);
-			++count;
-		}		
+function Town(population) {
+	var people = new Array(population);
+	var i,count=0;
+	var strats = new Array(3);
+	for (i=0;i<population;i++) {
+		strats[0] = Math.random(); strats[1] = Math.random(); strats[2] = Math.random();
+		people[i] = (strats[0]+strats[1]+strats[2])/3;
+		if (people[i] > 0.5)
+			count++;
 	}
-	
-	isGoingToBar : function() {
-		var i,j,k;
-		if (people[i])
-	}
-	
-	
-};
+	return count;	
+}
 
 function main(form) {
-	var barval;
-	var czech = form.Bars_based.checked;
-	if (czech) {
-		barval = form.percentBars.value;
-		alert(czech);
+	var newvar = form.numAgent.value;
+	var turnvar = form.numTurns.value;
+	var j;
+	var arr = new Array(turnvar);
+	var arr2 = new Array(turnvar+1)
+	arr2[0]=["turn","bar"];
+	for (j=0;j<turnvar;j++) {
+		arr[j] = Town(newvar);
+		arr[j+1]=[j,arr[j]];
+		
 	}
-
-		var newvar = form.numAgent.value;
 	
+	for (j=0;j<turnvar;j++) {
+		alert(arr[j]);
+	}	
 }
+
+google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(arr2);
+
+        var options = {
+          title: 'Age vs. Weight comparison',
+          hAxis: {title: 'Age', minValue: 0, maxValue: 15},
+          vAxis: {title: 'Weight', minValue: 0, maxValue: 15},
+          legend: 'none'
+        };
 </script>
 
 
@@ -87,6 +85,12 @@ function main(form) {
  <input type="submit" onclick="main(this.form)" value="Simulate!" />
  </form>
 
- 
+	<div id="chart_div" style="width: 900px; height: 500px;"></div>
+	
+	
+
+
+
+
  </body>
 </html>
